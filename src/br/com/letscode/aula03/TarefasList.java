@@ -14,6 +14,10 @@ public class TarefasList {
         return tarefas.toArray(new Tarefa[]{});
     }
 
+    public int getTotal() {
+        return tarefas.size();
+    }
+
     public boolean remover(int id) {
         Tarefa tarefa = obterPorId(id);
         if (tarefa != null) {
