@@ -73,6 +73,20 @@ public class TarefasTela {
     }
 
     public void listarTarefas(Tarefa[] tarefas) {
-        System.out.println("Tarefa   - Prioridade - %");
+        System.out.printf("%s %s %s %n", formataColuna("Tarefa", 60), formataColuna("Prioridade", 15), formataColuna("%", 10));
+        System.out.println("-".repeat(88));
+        for (Tarefa tarefa : tarefas) {
+            System.out.printf("%s %s %s %n", formataColuna(tarefa.getTitulo(), 60), formataColuna(tarefa.getPrioridade().name(), 15), formataColuna(String.format("%f", tarefa.getProgresso()), 10));
+        }
+        System.out.println("-".repeat(88));
+    }
+
+    private String formataColuna(String texto, int colunas) {
+        int tamanho = texto.length();
+        if (tamanho < colunas) {
+            return texto + " ".repeat(colunas-tamanho);
+        } else {
+            return texto.substring(0, colunas-3) + "...";
+        }
     }
 }
