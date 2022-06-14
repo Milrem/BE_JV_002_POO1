@@ -38,10 +38,12 @@ public class Estacionamento {
 
     private int numeroVagas;
     private List<Veiculo> veiculos;
+    private List<Veiculo> faturados;
 
     public Estacionamento(int numeroVagas) {
         this.numeroVagas = numeroVagas;
         this.veiculos = new ArrayList<>();
+        this.faturados = new ArrayList<>();
     }
 
     public void passandoNaCancela(String placa, Date dataEHora) {
@@ -55,6 +57,7 @@ public class Estacionamento {
             //Veículo está saindo;
             veiculo.setHoraSaida(dataEHora);
             veiculos.remove(veiculo);
+            faturados.add(veiculo);
             System.out.printf("Saída do veículo de placa: %s. Tempo no estabelecimento: %d minutos. Valor a ser cobrado: %f %n", veiculo.getPlaca(), veiculo.getTempoPernamenciaEmMinutos(), valorACobrar(veiculo));
         } else {
             if (veiculos.size() < numeroVagas) {
@@ -86,6 +89,12 @@ public class Estacionamento {
 
     public void exibirRelatorio() {
         System.out.printf("Placa do veículo | Hora de entrada | Hora de saída | Valor cobrado %n");
-        System.out.printf("%s | %t | %t | %f %n", placa, horaEntrada, horaSaida, valorCobrado);
+        for (int i = 0; i < faturados.size(); i++) {
+            Veiculo veiculo = faturados.get(i);
+            System.out.printf("%d %s | %s | %s | %f %n", i, veiculo.getPlaca(), veiculo.getHoraEntrada(), veiculo.getHoraSaida(), valorACobrar(veiculo));
+        }
+        for (Veiculo veiculo : faturados) {
+            System.out.printf("%s | %s | %s | %f %n", veiculo.getPlaca(), veiculo.getHoraEntrada(), veiculo.getHoraSaida(), valorACobrar(veiculo));
+        }
     }
 }
