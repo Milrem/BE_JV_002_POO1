@@ -20,5 +20,7 @@ public class App {
         estacionamento1.passandoNaCancela("XXX-9987", calendar.getTime());
         calendar.set(2022, Calendar.JUNE, 13, 17, 55, 0);
         estacionamento1.passandoNaCancela("XZZ-9987", calendar.getTime());
+
+        estacionamento1.exibirRelatorio();
     }
 }

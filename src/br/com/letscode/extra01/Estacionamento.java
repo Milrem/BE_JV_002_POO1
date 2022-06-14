@@ -20,6 +20,11 @@ package br.com.letscode.extra01;
     • Acima de 60 minutos é cobrado um valor de R$ 6,00 por hora adicional.
         Ex.: 1 hora e 4 minutos de permanecia, deverá ser cobrado:
         4 reais da primeira hora e 6 reais dos 4 minutos que compoe a hora adicional. Total 10 reais.
+
+   Ao encerrar o sistema deve ser exibido um relatório com o faturamento do estacionamento, contendo:
+   Placa do veículo | Hora de entrada | Hora de saída | Valor cobrado.
+
+
  */
 
 import java.util.ArrayList;
@@ -77,5 +82,10 @@ public class Estacionamento {
             }
             return VALOR_HORA + (VALOR_HORA_ADICIONAL * horasExtras);
         }
+    }
+
+    public void exibirRelatorio() {
+        System.out.printf("Placa do veículo | Hora de entrada | Hora de saída | Valor cobrado %n");
+        System.out.printf("%s | %t | %t | %f %n", placa, horaEntrada, horaSaida, valorCobrado);
     }
 }
